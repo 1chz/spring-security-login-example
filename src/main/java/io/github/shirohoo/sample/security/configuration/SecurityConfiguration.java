@@ -65,10 +65,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public HttpLoginFilter httpLoginProcessingFilter(
-            ObjectMapper objectMapper,
-            AuthenticationManager authenticationManager
-    ) {
+    public HttpLoginFilter httpLoginProcessingFilter(ObjectMapper objectMapper, AuthenticationManager authenticationManager) {
         HttpLoginFilter filter = new HttpLoginFilter(objectMapper);
         filter.setAuthenticationManager(authenticationManager);
         filter.setAuthenticationSuccessHandler(new CustomAuthenticationSuccessHandler(objectMapper));

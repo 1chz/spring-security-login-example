@@ -1,6 +1,7 @@
 package io.github.shirohoo.sample.security.domain;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,10 +21,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, updatable = false)
     private Long id;
 
+    @Column(name = "email", unique = true, nullable = false, updatable = false)
     private String email;
 
+    @Column(name = "password", nullable = false)
     private String password;
 
     public User(String email, String password) {

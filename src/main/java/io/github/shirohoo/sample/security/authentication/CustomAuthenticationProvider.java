@@ -27,10 +27,17 @@ public final class CustomAuthenticationProvider implements AuthenticationProvide
         }
 
         if (isHttpAuthenticationToken(authentication.getClass())) {
-            return HttpAuthenticationToken.authenticated(user.getUsername(), null, user.getAuthorities());
+            return HttpAuthenticationToken.authenticated(
+                    /*principal*/ user.getUsername(),
+                    /*credentials*/ null, user.getAuthorities()
+            );
         }
 
-        return new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getAuthorities());
+        return UsernamePasswordAuthenticationToken.authenticated(
+                /*principal*/ user.getUsername(),
+                /*credentials*/ null,
+                /*authorities*/ user.getAuthorities()
+        );
     }
 
     @Override
@@ -38,11 +45,11 @@ public final class CustomAuthenticationProvider implements AuthenticationProvide
         return isFormLoginAuthenticationToken(authentication) || isHttpAuthenticationToken(authentication);
     }
 
-    private boolean isFormLoginAuthenticationToken(Class<?> authentication) {
-        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
-    }
-
     private boolean isHttpAuthenticationToken(Class<?> authentication) {
         return HttpAuthenticationToken.class.isAssignableFrom(authentication);
+    }
+
+    private boolean isFormLoginAuthenticationToken(Class<?> authentication) {
+        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
     }
 }

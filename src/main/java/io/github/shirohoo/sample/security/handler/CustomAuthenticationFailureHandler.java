@@ -1,37 +1,34 @@
 package io.github.shirohoo.sample.security.handler;
 
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.shirohoo.sample.security.web.HttpResponse;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
+@RequiredArgsConstructor
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
     private final ObjectMapper objectMapper;
 
-    public CustomAuthenticationFailureHandler(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
-
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException {
         response.setCharacterEncoding("UTF-8");
-        response.setStatus(HttpStatus.UNAUTHORIZED.value());
-        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setStatus(UNAUTHORIZED.value());
+        response.setContentType(APPLICATION_JSON_VALUE);
 
-        String errMsg = "Email or password is invalid.";
+        String message = "email or password is invalid.";
 
         if (exception instanceof BadCredentialsException) {
-            errMsg = "Email or password is invalid.";
+            message = "email or password is invalid.";
         }
 
-        HttpResponse<String> httpResponse = new HttpResponse<>(HttpStatus.UNAUTHORIZED, errMsg);
+        HttpResponse<String> httpResponse = new HttpResponse<>(UNAUTHORIZED, message);
         objectMapper.writeValue(response.getWriter(), httpResponse);
     }
 }

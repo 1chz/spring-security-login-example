@@ -17,7 +17,7 @@ public class Application implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         User user = new User("siro@gmail.com", "{bcrypt}$2a$10$1r7iIazckvHAq3CHGB4YDesJ5h/4gvv4n8ZHzmzr.ey6495c/AMKq");
         userRepository.save(user);
     }

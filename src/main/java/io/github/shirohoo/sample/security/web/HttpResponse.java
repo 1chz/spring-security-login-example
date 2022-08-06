@@ -13,7 +13,7 @@ public class HttpResponse<T> {
         this(httpStatus.value(), httpStatus.getReasonPhrase(), body);
     }
 
-    public HttpResponse(int status, String reason, T body) {
+    private HttpResponse(int status, String reason, T body) {
         this.status = status;
         this.reason = reason;
         this.body = body;

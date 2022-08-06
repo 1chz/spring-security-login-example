@@ -10,9 +10,7 @@ import org.springframework.util.Assert;
 public class HttpAuthenticationToken extends AbstractAuthenticationToken {
     @Serial
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
-
     private final Object principal;
-
     private Object credentials;
 
     private HttpAuthenticationToken(Object principal, Object credentials) {
@@ -49,7 +47,7 @@ public class HttpAuthenticationToken extends AbstractAuthenticationToken {
 
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-        Assert.isTrue(!isAuthenticated, "Cannot set this token to trusted - use constructor which takes a GrantedAuthority list instead");
+        Assert.isTrue(!isAuthenticated, "can't set this token to trusted - use constructor which takes a GrantedAuthority list instead");
         super.setAuthenticated(false);
     }
 
