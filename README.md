@@ -1,3 +1,19 @@
-# Spring Security - REST API 기반의 인증 아키텍처 예제코드
+# Spring Security - HTTP API-based authentication architecture example code
 
-- 블로그 포스트: https://shirohoo.github.io/spring/spring-security/2021-08-30-rest-login/
+![Java_17](https://img.shields.io/badge/java-17-red?logo=java)
+![Spring_Boot 3](https://img.shields.io/badge/Spring_Boot-3-green.svg?logo=spring)
+[![GitHub license](https://img.shields.io/github/license/shirohoo/sample-spring-security-login)](https://github.com/shirohoo/sample-spring-security-login)
+[![GitHub stars](https://img.shields.io/github/stars/shirohoo/sample-spring-security-login)](https://github.com/shirohoo/sample-spring-security-login/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/shirohoo/sample-spring-security-login)](https://github.com/shirohoo/sample-spring-security-login/issues)
+[![GitHub forks](https://img.shields.io/github/forks/shirohoo/sample-spring-security-login)](https://github.com/shirohoo/sample-spring-security-login/network)
+
+## Versions
+
+- Java 17 (GraalVM)
+- Spring Boot 3 (Snapshot)
+    - Spring Security 6.0
+- Gradle 7.5
+
+## More
+
+- Blog post: https://shirohoo.github.io/spring/spring-security/2021-08-30-rest-login/
