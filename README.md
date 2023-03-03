@@ -13,7 +13,3 @@
 - Spring Boot 3 (Snapshot)
     - Spring Security 6.0
 - Gradle 7.5
-
-## More
-
-- Blog post: https://shirohoo.github.io/spring/spring-security/2021-08-30-rest-login/
